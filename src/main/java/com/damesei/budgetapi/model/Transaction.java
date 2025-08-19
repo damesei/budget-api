@@ -51,8 +51,16 @@ public class Transaction{
     @Column(name = "note", nullable = true, length = 255)
     private String note;
 
+    
     @Column(name = "created_at", nullable = false, updatable = false, insertable = false)
     private LocalDateTime createdAt;
+
+    @PrePersist
+    void generateCreatedAt() {
+        if (createdAt == null) {
+            createdAt = LocalDateTime.now();
+        }
+    }
 
     public String getId() {
         return id;

@@ -38,7 +38,7 @@ public class TransactionController{
     }
 
     @GetMapping("/{id}")
-    public Transaction geTransaction(@PathVariable String id) {
+    public Transaction getTransaction(@PathVariable String id) {
         return service.getById(id)
         .orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND, "Transaction not found"));
     }
